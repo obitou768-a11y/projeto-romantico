@@ -89,7 +89,7 @@ function initApp() {
     unlockedChapter = Math.max(0, Math.min(DATA.capitulos.length - 1, saved.unlockedChapter));
     currentChapter = Math.max(0, Math.min(unlockedChapter, Number(saved.currentChapter) || 0));
   }
-  document.getElementById("startButton").addEventListener("click", startExperience);
+  document.getElementById("startButton").addEventListener("click", () => { startMusic(); startExperience(); });
   document.getElementById("homeButton").addEventListener("click", returnToOpening);
   document.getElementById("restartButton").addEventListener("click", confirmRestart);
   document.getElementById("nextButton").addEventListener("click", advanceChapter);
@@ -98,13 +98,14 @@ function initApp() {
   document.getElementById("dialogClose").addEventListener("click", closeModal);
   dialog.addEventListener("click", (event) => { if (event.target === dialog) closeModal(); });
   document.addEventListener("keydown", (event) => { if (event.key === "Escape" && dialog.open) closeModal(); });
-  document.getElementById("musicToggle").addEventListener("click", startMusic);
+  document.getElementById("musicToggle").addEventListener("click", toggleMusic);
   document.getElementById("musicVolume").addEventListener("input", (event) => { coupleAudio.volume = Number(event.target.value); });
   coupleAudio.addEventListener("play", () => { musicDock.classList.add("is-playing"); document.getElementById("musicToggle").setAttribute("aria-label", "Pausar nossa música"); });
   coupleAudio.addEventListener("pause", () => { musicDock.classList.remove("is-playing"); document.getElementById("musicToggle").setAttribute("aria-label", "Tocar nossa música"); });
   coupleAudio.addEventListener("error", showMissingMusicNotice);
   populateChapterMenu();
   updateProgress();
+  startMusic();
 }
 
 function populateChapterMenu() {
@@ -465,13 +466,24 @@ function revealGameCard(button) {
 }
 
 async function startMusic() {
-  if (!coupleAudio.paused) { coupleAudio.pause(); return; }
+  if (!coupleAudio.paused) return;
   try {
     await coupleAudio.play();
     document.getElementById("musicNotice").hidden = true;
   } catch {
-    showMissingMusicNotice();
+    showAutoplayNotice();
   }
+}
+
+function toggleMusic() {
+  if (coupleAudio.paused) startMusic();
+  else coupleAudio.pause();
+}
+
+function showAutoplayNotice() {
+  const notice = document.getElementById("musicNotice");
+  notice.textContent = "O navegador bloqueou o início automático. Toque em Começar nossa história ou em Nossa música para ouvir.";
+  notice.hidden = false;
 }
 
 function showMissingMusicNotice() {

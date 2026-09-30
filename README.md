@@ -32,7 +32,7 @@ As cinco fotos enviadas já estão em `assets/fotos/` e aparecem na galeria. Par
 
 ## Música
 
-O arquivo atual está em `assets/audio/YTDown.com_YouTube_Media_qBBwXuEV4jA_Eu-Amo-Você_009_128k.mp3`, já conectado em `CONFIG.musica.arquivo`. Para trocar a faixa, substitua o caminho nesse campo. A música só toca após a pessoa usar o controle; se o arquivo estiver ausente, o site continua funcionando e mostra a orientação de configuração.
+O arquivo atual está em `assets/audio/YTDown.com_YouTube_Media_qBBwXuEV4jA_Eu-Amo-Você_009_128k.mp3`, já conectado em `CONFIG.musica.arquivo`. O site tenta iniciar a música ao abrir e também ao começar a história. Como navegadores podem bloquear áudio automático, a pessoa pode precisar clicar em **Começar nossa história** ou em **Nossa música**. Para trocar a faixa, substitua o caminho em `CONFIG.musica.arquivo`; se o arquivo estiver ausente, o site continua funcionando e mostra uma orientação.
 
 ## Perguntas e memórias
 
