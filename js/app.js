@@ -89,7 +89,7 @@ function initApp() {
     unlockedChapter = Math.max(0, Math.min(DATA.capitulos.length - 1, saved.unlockedChapter));
     currentChapter = Math.max(0, Math.min(unlockedChapter, Number(saved.currentChapter) || 0));
   }
-  document.getElementById("startButton").addEventListener("click", () => { startMusic(); startExperience(); });
+  document.getElementById("startButton").addEventListener("click", () => { startMusic(true); startExperience(); });
   document.getElementById("homeButton").addEventListener("click", returnToOpening);
   document.getElementById("restartButton").addEventListener("click", confirmRestart);
   document.getElementById("nextButton").addEventListener("click", advanceChapter);
@@ -105,7 +105,7 @@ function initApp() {
   coupleAudio.addEventListener("error", showMissingMusicNotice);
   populateChapterMenu();
   updateProgress();
-  startMusic();
+  startMusic(true);
 }
 
 function populateChapterMenu() {
@@ -465,8 +465,9 @@ function revealGameCard(button) {
   }, 700);
 }
 
-async function startMusic() {
-  if (!coupleAudio.paused) return;
+async function startMusic(forceRestart = false) {
+  if (!coupleAudio.paused && !forceRestart) return;
+  if (forceRestart) coupleAudio.currentTime = 0;
   try {
     await coupleAudio.play();
     document.getElementById("musicNotice").hidden = true;

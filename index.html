@@ -55,7 +55,7 @@
   </main>
 
   <aside class="music-dock" id="musicDock" aria-label="Controles da música do casal">
-    <audio id="coupleAudio" preload="none"></audio>
+    <audio id="coupleAudio" preload="auto" autoplay loop></audio>
     <button class="music-toggle" id="musicToggle" type="button" aria-label="Tocar nossa música"><span class="music-note" aria-hidden="true">♫</span><span id="musicLabel">Nossa música</span><span class="equalizer" id="equalizer" aria-hidden="true"><i></i><i></i><i></i></span></button>
     <label class="volume-control" for="musicVolume"><span class="visually-hidden">Volume da música</span><input id="musicVolume" type="range" min="0" max="1" step="0.05" value="0.7"></label>
     <p class="music-notice" id="musicNotice" hidden></p>
