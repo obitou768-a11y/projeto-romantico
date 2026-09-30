@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#160f14">
+  <meta name="description" content="Uma pequena aventura para celebrar a nossa história.">
+  <title>Nossa história — 2 anos de nós</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/config.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <div class="ambient" id="ambientParticles" aria-hidden="true"></div>
+  <div class="page-grain" aria-hidden="true"></div>
+
+  <section class="opening" id="opening" aria-labelledby="openingTitle">
+    <div class="opening-orbit orbit-one" aria-hidden="true"></div>
+    <div class="opening-orbit orbit-two" aria-hidden="true"></div>
+    <div class="opening-copy">
+      <p class="eyebrow"><span class="eyebrow-line"></span> UMA HISTÓRIA SÓ NOSSA <span class="eyebrow-line"></span></p>
+      <h1 id="openingTitle">NOSSA HISTÓRIA <span>— 2 anos de nós</span> <i aria-hidden="true">♥</i></h1>
+      <p class="opening-lead">Há 2 anos, duas pessoas começaram uma história<span class="opening-period">.</span></p>
+      <p class="opening-follow">E essa história ainda está sendo escrita.</p>
+      <button class="button button-primary opening-button" id="startButton" type="button">Começar nossa história <span aria-hidden="true">♥</span></button>
+      <p class="opening-note">Uma experiência feita especialmente para você.</p>
+    </div>
+    <div class="opening-bottom" aria-hidden="true"><span>COM CARINHO,</span><span>PARA SEMPRE EM CONSTRUÇÃO</span></div>
+  </section>
+
+  <main class="experience" id="experience" hidden>
+    <header class="topbar">
+      <button class="wordmark" id="homeButton" type="button" aria-label="Voltar à abertura">N<span>♥</span>N</button>
+      <div class="progress-area">
+        <div class="progress-label"><span id="progressName">Nossa história</span><span id="progressCount">1 / 10</span></div>
+        <div class="progress-track" role="progressbar" aria-label="Progresso da história" aria-valuemin="1" aria-valuemax="10" aria-valuenow="1"><span id="progressBar"></span></div>
+      </div>
+      <div class="top-actions">
+        <label class="chapter-select-label" for="chapterMenu">Capítulos</label>
+        <select id="chapterMenu" aria-label="Acessar capítulo desbloqueado"></select>
+        <button class="icon-button" id="restartButton" type="button" aria-label="Recomeçar do zero" title="Recomeçar do zero">↺</button>
+      </div>
+    </header>
+
+    <div class="chapter-wrap" id="chapterWrap">
+      <section class="chapter" id="chapterStage" aria-live="polite" aria-atomic="false"></section>
+      <nav class="chapter-nav" aria-label="Navegação dos capítulos">
+        <button class="button button-quiet" id="backButton" type="button">← Voltar</button>
+        <span class="nav-hint" id="navHint">No seu tempo. Essa história é sua.</span>
+        <button class="button button-primary" id="nextButton" type="button">Continuar <span aria-hidden="true">→</span></button>
+      </nav>
+    </div>
+    <footer class="site-footer"><span>FEITO DE LEMBRANÇAS E UM TANTO DE SAUDADE</span><span id="footerPhrase"></span></footer>
+  </main>
+
+  <aside class="music-dock" id="musicDock" aria-label="Controles da música do casal">
+    <audio id="coupleAudio" preload="none"></audio>
+    <button class="music-toggle" id="musicToggle" type="button" aria-label="Tocar nossa música"><span class="music-note" aria-hidden="true">♫</span><span id="musicLabel">Nossa música</span><span class="equalizer" id="equalizer" aria-hidden="true"><i></i><i></i><i></i></span></button>
+    <label class="volume-control" for="musicVolume"><span class="visually-hidden">Volume da música</span><input id="musicVolume" type="range" min="0" max="1" step="0.05" value="0.7"></label>
+    <p class="music-notice" id="musicNotice" hidden></p>
+  </aside>
+
+  <dialog class="memory-dialog" id="memoryDialog" aria-labelledby="dialogTitle">
+    <button class="dialog-close" id="dialogClose" type="button" aria-label="Fechar">×</button>
+    <div id="dialogContent"></div>
+  </dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
